@@ -25,7 +25,7 @@ Product.init(
       allowNull: false,
     },
     stock: {
-      type: DataType.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     category_id: {
