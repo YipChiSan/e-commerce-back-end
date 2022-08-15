@@ -10,6 +10,9 @@ router.get('/', (req, res) => {
     const categoryData = await Category.findAll({
       include: [{ model: Product}],
     });
+    if (!categoryData || categoryData.length === 0) {
+      res.status(400).json("No category can be found!");
+    }
     res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
