@@ -80,6 +80,18 @@ router.post('/', (req, res) => {
 
 // update product
 router.put('/:id', (req, res) => {
+
+  if (!req.body.tagIds) {
+    Product.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((product) => res.json(product))
+    .catch((err)=> {
+      res.status(400).json(err);
+    });
+  }
   // update product data
   Product.update(req.body, {
     where: {
